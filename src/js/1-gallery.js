@@ -73,15 +73,24 @@ function createMarkup(arr) {
     .map(
       ({ preview, original, description }) => `
       <li class="gallery-item">
-        <a class="gallery-link" href="large-image.jpg">
-            <img class="gallery-image"
-            src="${preview}"
-            data-source="${original}"
-            alt="${description}"/>
-        </a>
-      </li>`
+	<a class="gallery-link" href="${original}">
+		<img 
+			class="gallery-image" 
+			src="${preview}" 
+			alt="${description}" 
+			/>
+	</a>
+</li>`
     )
     .join('');
 }
 
 gallery.insertAdjacentHTML('afterbegin', createMarkup(images));
+
+new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionSelector: 'img',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});

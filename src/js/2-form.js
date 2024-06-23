@@ -1,4 +1,4 @@
-formData = { email: '', message: '' };
+let formData = { email: '', message: '' };
 const feedbackForm = document.querySelector('.feedback-form');
 const storageData = localStorage.getItem('feedback-form-state');
 
@@ -39,8 +39,8 @@ function handlerSubmit(event) {
   const email = form.elements.email.value.trim();
   const message = form.elements.message.value.trim();
 
-  // Check if the form is not empty
   if (email != '' && message != '') {
+    // Check if the form is not empty
     // Log the formData object
     console.log(formData);
 
@@ -48,5 +48,7 @@ function handlerSubmit(event) {
     localStorage.removeItem('feedback-form-state');
     formData = { email: '', message: '' };
     form.reset();
+  } else {
+    alert('Fill please all fields');
   }
 }
